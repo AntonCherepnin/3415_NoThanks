@@ -1,7 +1,7 @@
 class Card:
     VALUES = list(range(3, 36))
 
-    def __init__(self, value):
+    def __init__(self, value:int):
         if value not in Card.VALUES:
             raise ValueError
         self.value = value
