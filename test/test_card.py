@@ -1,5 +1,5 @@
 import pytest
-from card import (Card)
+from src.card import (Card)
 
 
 def test_init():
