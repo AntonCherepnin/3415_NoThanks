@@ -48,7 +48,7 @@ Alex = []
 Bob = []
 Anton = []
 -----
-Top: 19 score: 0
+Top: |19| score: 0
 Вы должны Взять карту(take) или Потратить фишку(spend)
 Alex: spend
 Top: 19 score: 1
@@ -63,27 +63,27 @@ Anton = []
 ----
 Top: 25 score: 0
 Alex: spend
-Top: 25| score: 1
+Top: 25 score: 1
 Anton: spend
-Top: |25| score: 2
+Top: 25 score: 2
 Bob: spend
-Top: |25| score: 3
+Top: 25 score: 3
 Alex: spend
-Top: |25| score: 4
+Top: 25 score: 4
 noobik77: spend
-Top: |25| score: 5
+Top: 25 score: 5
 Bob: spend
-Top: |25| score: 6
+Top: 25 score: 6
 Alex: spend
-Top: |25| score: 7
+Top: 25 score: 7
 Anton: spend
-Top: |25| score: 8
+Top: 25 score: 8
 Bob: spend
-Top: |25| score: 9
+Top: 25 score: 9
 Alex: spend
-Top: |25| score: 10
+Top: 25 score: 10
 Anton: spend
-Top: |25| score: 11
+Top: 25 score: 11
 Bob: take
 -----
 Players:
@@ -106,26 +106,26 @@ Alex WIN!
 ## Формат save-файла
 ```json
 {
-  "top": "|15| score: 0",
-  "deck": "|32| |25| |18| |27| |4|",
+  "top": "15 score: 0",
+  "deck": ["32, 25, 18, 27, 4"],
   "current_player_index": 0,
   "players": [
     {
       "name": "Alex",
       "score": 10,
-      "hand": "|33| |22| |14| |28| |7|",
+      "hand": ["33, 22, 14, 28, 7"],
       "is_human": true
     },
     {
       "name": "Bob",
       "score": 8,
-      "hand": "|13|, |15|, |19|, |21|",
+      "hand": ["13, 15, 19, 21"],
       "is_human": false
     },
     {
         "name": "Anton",
         "score": 15,
-        "hand": "|8|, |9|, |10|, |11|",
+        "hand": ["8, 9, 10, 11"],
         "is_human": true
     }
   ]
