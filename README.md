@@ -48,7 +48,7 @@ Alex = []
 Bob = []
 Anton = []
 -----
-Top: |19| score: 0
+Top: 19 score: 0
 Вы должны Взять карту(take) или Потратить фишку(spend)
 Alex: spend
 Top: 19 score: 1
