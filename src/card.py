@@ -8,3 +8,18 @@ class Card:
 
     def __repr__(self):
         return f'{self.value}'
+
+    def __eq__(self,other):
+        return self.value == other.value 
+    def save(self)->int:
+        '''Card(15)->15'''
+        return self.value
+    @staticmethod
+    def load(number:int):
+        return Card(value=number)
+    @staticmethod
+    def all_cards(values: None | list[int] = None):
+        if values is None:
+            values  = Card.VALUES
+        cards = [Card(value=val) for val in values]
+        return cards
