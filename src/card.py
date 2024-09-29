@@ -7,7 +7,7 @@ class Card:
         self.value = value
 
     def __repr__(self):
-        return self.value
+        return f'{self.value}'
 
     def __eq__(self,other):
         return self.value == other.value 
