@@ -8,7 +8,7 @@ class Hand:
         self.cards:list[Card] = cards
     
     def __repr__(self):
-        return self.save()
+        return f'{self.cards}'
     
     def __eq__(self,other):
         if isinstance(other,list):
@@ -21,7 +21,7 @@ class Hand:
     
     
     @classmethod
-    def load(cls, lis: list):
+    def load(cls, lis: list[int]):
         cards = [Card.load(s) for s in lis]
         return cls(cards=cards)
     
