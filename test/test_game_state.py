@@ -37,14 +37,9 @@ def test_init():
 
 def test_current_player():
     players = [alex, anton, bob]
-    game = GameState(players = players, deck = full_deck,  card = Card(5), coins = 0 )
-    assert game.current_player() == alex
-    
-    game = GameState(players = players, deck = full_deck, current_player = 1, card = Card(5), coins = 0 )
-    assert game.current_player() == anton
-    
-    game = GameState(players = players, deck = full_deck, current_player = 2, card = Card(5), coins = 0 )
-    assert game.current_player() == bob
+    for i, player in enumerate(players):
+        game = GameState(players = players, deck = full_deck, current_player = i, card = Card(5), coins = 0 )
+        assert game.current_player() == player
       
 def test_eq():
     players = [alex, anton, bob]
@@ -81,7 +76,7 @@ def test_next_player():
     game.next_player()
     assert game.current_player() == anton
 
-def test_play_card():
+def test_draw_card():
     players = [alex, anton, bob]
     game = GameState(
         players=players,

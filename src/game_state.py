@@ -6,7 +6,7 @@ from src.player import Player
 
 class GameState:
     def __init__(self, players: list[Player], deck: Deck, current_player: int = 0, card: Card | None = None, coins: int =0):
-        self.players: list[Player] = players
+        self.players: Player = players
         self.deck: Deck = deck
         self._current_player: int = current_player
         self.card = card
@@ -19,7 +19,8 @@ class GameState:
     
     def __eq__(self, other):
         return self.players == other.players and self.deck == other.deck and \
-               self._current_player == other._current_player and self.card == other.card and self.coins == other.coins
+               self._current_player == other._current_player and self.card == other.card \
+               and self.coins == other.coins
            
     def save(self) -> dict:
         return {
@@ -43,8 +44,8 @@ class GameState:
         )
     
     def next_player(self):
-        n = len(self.players)
-        self._current_player = (self._current_player + 1) % n 
+        self._current_player += 1
+        self._current_player  %= len(self.players)
    
     def draw_card(self):
         card = self.deck.draw_card()
