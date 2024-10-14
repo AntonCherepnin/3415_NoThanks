@@ -27,7 +27,7 @@ class Player:
         return {
             'name': self.name,
             'hand': self.hand,
-            'score': self.coins,
+            'coins': self.coins,
         }
     
     @classmethod

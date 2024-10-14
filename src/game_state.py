@@ -24,8 +24,8 @@ class GameState:
     def save(self) -> dict:
         return {
             "top": {"card": self.card.save(), "coins": self.coins},
-            "deck":self.deck.save(),
-            "current_player_index": {self._current_player},
+            "deck":self.deck,
+            "current_player_index": self._current_player,
             "players": [p.save() for p in self.players],
         }
         

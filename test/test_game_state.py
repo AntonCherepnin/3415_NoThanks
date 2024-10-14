@@ -23,7 +23,7 @@ data = {
 alex = Player.load(data["players"][0])
 anton = Player.load(data["players"][1])
 bob = Player.load(data["players"][2])
-full_deck = Deck(None)
+full_deck = Deck(5)
 
 def test_init():
     players = [alex, anton, bob]
@@ -49,7 +49,50 @@ def test_current_player():
 def test_eq():
     players = [alex, anton, bob]
     game1 = GameState(players = players, deck = full_deck,  card = Card(5), coins = 0 )
-    game2 = GameState(players = players.copy(), deck = full_deck,  card = Card(5), coins = 0 )
+    game2 = GameState(players = players.copy(), deck = Deck(5),  card = Card(5), coins = 0 )
     game3 = GameState(players=players, deck=Deck.load([6, 10, 11]), card = Card(5), coins = 0 )
     assert game1 == game2
     assert game1 != game3
+ 
+def test_save():
+    players = [alex, anton, bob]
+    game = GameState(
+        players=players,
+        deck=Deck.load(data["deck"]),
+        card = Card.load(data["top"]["card"]),
+        coins = int(data["top"]["coins"]),
+        current_player=1
+    )
+    assert game.save() == data
+def test_load():
+    game = GameState.load(data)
+    assert game.save() == data
+
+def test_next_player():
+    game = GameState.load(data)
+    assert game.current_player() == anton
+
+    game.next_player()
+    assert game.current_player() == bob
+
+    game.next_player()
+    assert game.current_player() == alex
+
+    game.next_player()
+    assert game.current_player() == anton
+
+def test_play_card():
+    players = [alex, anton, bob]
+    game = GameState(
+        players=players,
+        deck=Deck.load(data["deck"]),
+        card = Card.load(data["top"]["card"]),
+        coins = int(data["top"]["coins"]),
+        current_player= 2
+    )
+    assert game.deck == Deck.load([15,28])
+    assert game.current_player().hand == [9,19,23,25]
+
+    game.draw_card()
+    assert game.deck == Deck.load([15])
+    assert game.current_player().hand == [9,19,23,25,28]

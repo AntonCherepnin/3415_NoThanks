@@ -30,4 +30,5 @@ def test_load():
     p_expected = Player(name = 'Alex', hand = h, coins = 15)
     p = Player.load(data)
     assert p == p_expected
-    
+
+  
