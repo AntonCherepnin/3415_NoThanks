@@ -48,12 +48,12 @@ Alex = []
 Bob = []
 Anton = []
 -----
-Top: 19 score: 0
+Top: 19 coins: 0
 Вы должны Взять карту(take) или Потратить фишку(spend)
 Alex: spend
-Top: 19 score: 1
+Top: 19 coins: 1
 Bob: take
-Top: 12 score: 1
+Top: 12 coins: 1
 Alex: take
 -----
 Players:
@@ -61,29 +61,29 @@ Bob = []
 Alex = [12]
 Anton = []
 ----
-Top: 25 score: 0
+Top: 25 coins: 0
 Alex: spend
-Top: 25 score: 1
+Top: 25 coins: 1
 Anton: spend
-Top: 25 score: 2
+Top: 25 coins: 2
 Bob: spend
-Top: 25 score: 3
+Top: 25 coins: 3
 Alex: spend
-Top: 25 score: 4
+Top: 25 coins: 4
 noobik77: spend
-Top: 25 score: 5
+Top: 25 coins: 5
 Bob: spend
-Top: 25 score: 6
+Top: 25 coins: 6
 Alex: spend
-Top: 25 score: 7
+Top: 25 coins: 7
 Anton: spend
-Top: 25 score: 8
+Top: 25 coins: 8
 Bob: spend
-Top: 25 score: 9
+Top: 25 coins: 9
 Alex: spend
-Top: 25 score: 10
+Top: 25 coins: 10
 Anton: spend
-Top: 25 score: 11
+Top: 25 coins: 11
 Bob: take
 -----
 Players:
@@ -108,25 +108,25 @@ Alex WIN!
 {
   "top": {
     "card":15,
-    "score":0},
+    "coins":0},
   "deck": [32, 25, 18, 27, 4],
   "current_player_index": 0,
   "players": [
     {
       "name": "Alex",
-      "score": 10,
+      "coins": 10,
       "hand": [33, 22, 14, 28, 7],
       "is_human": true
     },
     {
       "name": "Bob",
-      "score": 8,
+      "coins": 8,
       "hand": [13, 15, 19, 21],
       "is_human": false
     },
     {
         "name": "Anton",
-        "score": 15,
+        "coins": 15,
         "hand": [8, 9, 10, 11],
         "is_human": true
     }

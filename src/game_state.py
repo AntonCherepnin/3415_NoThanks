@@ -5,7 +5,7 @@ from src.player import Player
 
 
 class GameState:
-    def __init__(self, players: list[Player], deck: Deck, current_player: int = 0, card: Card | None = None, coins: int =0):
+    def __init__(self, players: list[Player], deck: Deck, current_player: int = 0, card: Card | None = None, coins: int = 0):
         self.players: Player = players
         self.deck: Deck = deck
         self._current_player: int = current_player
@@ -51,3 +51,15 @@ class GameState:
         card = self.deck.draw_card()
         self.current_player().hand.add_card(card)
         return card
+    
+    def take_card(self):
+        self.current_player().hand.add_card(self.card)
+        self.current_player().coins += self.coins
+    
+    def _raise(self):
+        self.current_player().coins -= 1
+        self.coins +=1
+    
+    def score_players(self) -> {Player: int}:
+        return {p.name: p.score()-p.coins for p in self.players}
+        

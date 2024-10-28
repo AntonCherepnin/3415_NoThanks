@@ -6,7 +6,7 @@ from src.hand import Hand
 
 
 class Player:
-    def __init__(self, name: str, hand: Hand, coins: int = 11):
+    def __init__(self, name: str, hand: Hand, coins: int = 0):
         self.name = name
         self.hand = hand
         self.coins = coins
@@ -33,3 +33,7 @@ class Player:
     @classmethod
     def load(cls, data: dict):
         return cls(name=data['name'], hand=Hand.load(data['hand']), coins=int(data['coins']))
+
+    def score(self):
+        return self.hand.score()
+    
