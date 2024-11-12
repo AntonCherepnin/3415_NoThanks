@@ -118,7 +118,7 @@ class GameServer:
         print(f"{sortedScore[0][0]} is the winner!")
         return GamePhase.GAME_END
     def start_bidding_phase(self) -> GamePhase:
-        if self.game_state.deck.is_empty(): 
+        if self.game_state.deck == Deck([]): 
             return GamePhase.DECLARE_WINNER
         self.game_state.card = self.game_state.deck.draw_card()
         self.game_state.score = 0
@@ -128,7 +128,6 @@ class GameServer:
     def bidding_phase(self)  -> GamePhase:
         current_player = self.game_state.current_player()
         interaction = self.player_types[current_player.name]
-        print(current_player.hand)
         choose = interaction.choose_action(current_player, self.game_state.coins)
         if choose == 'Take card':
                 self.game_state.take_card()
