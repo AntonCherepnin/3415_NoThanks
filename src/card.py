@@ -1,4 +1,4 @@
-'''No_thnaks'''
+'''No_thanks'''
 
 class Card:
     VALUES = list(range(3, 36))

@@ -1,7 +1,9 @@
-from src.card import Card
+import sys
+sys.path.append('src')
+from card import Card
 
 class Hand:
-    def __init__(self, cards: None | list[Card]):
+    def __init__(self, cards: list[Card] | None = None):
         if cards is None:
             cards = []
         
@@ -28,7 +30,7 @@ class Hand:
     def add_card(self, card: Card):
         self.cards.append(card)
     
-    def score(self):
+    def score(self) -> int:
         ls = [c.value for c in self.cards]
         ls.sort()
         s = 0

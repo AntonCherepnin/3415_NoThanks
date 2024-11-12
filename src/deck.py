@@ -1,10 +1,11 @@
 import random
-
-from src.card import Card
+import sys
+sys.path.append('src')
+from card import Card
 
 
 class Deck:
-    def __init__(self, cards: None | list[Card]):
+    def __init__(self, cards: list[Card] | None = None):
         if cards is None:
             cards = Card.all_cards()
             random.shuffle(cards) #shuffle случайно распологает числа в массиве
@@ -12,7 +13,7 @@ class Deck:
     
     
     def __repr__(self):
-        return self.save()
+        return f'{self.save()}'
     
     def __eq__(self,other):
         if isinstance(other, list):

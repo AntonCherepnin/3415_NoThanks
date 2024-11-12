@@ -15,7 +15,7 @@ data = {
     "deck": [15, 28],
     "players": 
         [
-        {"name": 'Alex', "hand": [4,7,10,12],"coins": 10},
+        {"name": 'Alex', "hand": [4,7,10],"coins": 10},
         {"name": 'Anton',"hand": [11,13,14,18],"coins": 11},
         {"name": 'Bob', "hand": [9,19,23,25],"coins": 10},
         ],
@@ -91,3 +91,39 @@ def test_draw_card():
     game.draw_card()
     assert game.deck == Deck.load([15])
     assert game.current_player().hand == [9,19,23,25,28]
+
+def test_score_player():
+    players = [alex, anton, bob]
+    game = GameState(players, Deck(), 0, Card.load(12), coins = 12)
+    assert game.score_players() == {'Alex': 11, 'Anton': 31, 'Bob': 66}
+
+def test_raise():
+    players = [alex, anton, bob]
+    game = GameState(players, Deck(), 0, Card.load(12), coins = 0)
+    
+    game._raise()
+    assert game.current_player().coins == 9
+    
+    game.next_player()
+    game._raise()
+    assert game.current_player().coins == 10
+    
+    game.next_player()
+    game._raise()
+    assert game.current_player().coins == 9
+
+def test_take_card():
+    game = GameState.load(data)
+    
+    coins = game.current_player().coins
+    game.take_card()
+    assert game.current_player().hand == Hand.load([11, 13, 14, 18, 12])
+    assert game.current_player().coins == game.coins + coins
+    
+    game.next_player()
+    coins = game.current_player().coins
+    game.take_card()
+    assert game.current_player().hand == Hand.load([9, 19, 23, 25, 12])
+    assert game.current_player().coins == game.coins + coins
+    
+   
