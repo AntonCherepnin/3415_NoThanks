@@ -1,5 +1,6 @@
 import inspect
 import json
+import sys
 from src.deck import Deck
 from src.game_state import GameState
 from src.hand import Hand
@@ -11,7 +12,7 @@ import logging
 
 import enum
 
-from player_interactions import Bot
+from src.player_interactions import Bot
 
 
 class GamePhase(enum.StrEnum):
@@ -39,7 +40,6 @@ class GameServer:
         with open(filename,'r') as fin:
             data = json.load(fin)
             game_state = GameState.load(data)
-            print(game_state.save)
             player_types = {}
             for player, player_data in zip(game_state.players, data['players']):
                 kind = player_data['kind']
@@ -118,21 +118,21 @@ class GameServer:
             return GamePhase.DECLARE_WINNER
         self.game_state.card = self.game_state.deck.draw_card()
         self.game_state.score = 0
-        print('Top:', {"card": self.game_state.card , "coins": self.game_state.score})
         return GamePhase.BIDDING 
     
     def bidding_phase(self)  -> GamePhase:
         current_player = self.game_state.current_player()
         interaction = self.player_types[current_player.name]
         choose = interaction.choose_action(current_player, self.game_state.coins)
-        if choose == 'Take card':
+        match choose:
+            case 'Take card':
                 self.game_state.take_card()
                 interaction.inform_card_take(current_player)
                 return GamePhase.START_BIDDING
-        elif choose == 'Spend':
-            self.game_state._raise()
-            interaction.inform_player_spend(current_player)
-            return GamePhase.CONTINUE_BIDDING
+            case 'Spend':
+                self.game_state._raise()
+                interaction.inform_player_spend(current_player)
+                return GamePhase.CONTINUE_BIDDING
     def continue_bidding_phase(self) -> GamePhase:
         self.game_state.next_player()
         print(f"=== {self.game_state.current_player()}'s turn")
