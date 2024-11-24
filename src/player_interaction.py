@@ -1,9 +1,7 @@
 from abc import ABC, abstractmethod
-import sys
-sys.path.append('src')
-from card import Card
-from hand import Hand
-from player import Player
+from src.card import Card
+from src.hand import Hand
+from src.player import Player
 
 
 class PlayerInteraction(ABC):

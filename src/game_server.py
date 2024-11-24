@@ -1,15 +1,11 @@
 import inspect
 import json
-import sys
-
-sys.path.append('src')
-
-from deck import Deck
-from game_state import GameState
-from hand import Hand
-from player import Player
-from player_interaction import PlayerInteraction
-import player_interactions as all_player_types
+from src.deck import Deck
+from src.game_state import GameState
+from src.hand import Hand
+from src.player import Player
+from src.player_interaction import PlayerInteraction
+import src.player_interactions as all_player_types
 
 import logging
 

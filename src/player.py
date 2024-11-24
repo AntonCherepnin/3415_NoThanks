@@ -1,9 +1,6 @@
 import json 
 import typing
-import sys
-sys.path.append('src')
-
-from hand import Hand
+from src.hand import Hand
 
 
 class Player:

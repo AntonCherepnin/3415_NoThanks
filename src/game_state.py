@@ -1,8 +1,6 @@
-import sys
-sys.path.append('src')
-from card import Card
-from deck import Deck
-from player import Player
+from src.card import Card
+from src.deck import Deck
+from src.player import Player
 
 
 class GameState:

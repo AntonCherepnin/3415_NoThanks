@@ -1,6 +1,4 @@
-import sys
-sys.path.append('src')
-from card import Card
+from src.card import Card
 
 class Hand:
     def __init__(self, cards: list[Card] | None = None):

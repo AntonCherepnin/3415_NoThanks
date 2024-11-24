@@ -1,7 +1,5 @@
 import random
-import sys
-sys.path.append('src')
-from card import Card
+from src.card import Card
 
 
 class Deck:
