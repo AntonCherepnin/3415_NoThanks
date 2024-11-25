@@ -1,11 +1,11 @@
 import inspect
 import json
-import sys
 from src.deck import Deck
 from src.game_state import GameState
 from src.hand import Hand
 from src.player import Player
 from src.player_interaction import PlayerInteraction
+from src.player_interaction import ChooseAction
 import src.player_interactions as all_player_types
 
 import logging
@@ -123,13 +123,14 @@ class GameServer:
     def bidding_phase(self)  -> GamePhase:
         current_player = self.game_state.current_player()
         interaction = self.player_types[current_player.name]
+        print(f'Current player: {current_player}', 'Top:', {"card": self.game_state.card, "coins": self.game_state.coins})
         choose = interaction.choose_action(current_player, self.game_state.coins)
         match choose:
-            case 'Take card':
+            case ChooseAction.TAKE_CARD:
                 self.game_state.take_card()
                 interaction.inform_card_take(current_player)
                 return GamePhase.START_BIDDING
-            case 'Spend':
+            case ChooseAction.SPEND:
                 self.game_state._raise()
                 interaction.inform_player_spend(current_player)
                 return GamePhase.CONTINUE_BIDDING

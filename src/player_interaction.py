@@ -2,7 +2,11 @@ from abc import ABC, abstractmethod
 from src.card import Card
 from src.hand import Hand
 from src.player import Player
+from enum import Enum
 
+class ChooseAction(Enum):
+    TAKE_CARD = "Take card"
+    SPEND = "Spend"
 
 class PlayerInteraction(ABC):
     @classmethod
