@@ -117,13 +117,15 @@ class GameServer:
         if self.game_state.deck == Deck([]): 
             return GamePhase.DECLARE_WINNER
         self.game_state.card = self.game_state.deck.draw_card()
-        self.game_state.score = 0
+        self.game_state.coins = 0
         return GamePhase.BIDDING 
     
     def bidding_phase(self)  -> GamePhase:
         current_player = self.game_state.current_player()
         interaction = self.player_types[current_player.name]
+        print('-----------------------------------------------')
         print(f'Current player: {current_player}', 'Top:', {"card": self.game_state.card, "coins": self.game_state.coins})
+        print('-----------------------------------------------')
         choose = interaction.choose_action(current_player, self.game_state.coins)
         match choose:
             case ChooseAction.TAKE_CARD:

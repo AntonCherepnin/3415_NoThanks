@@ -20,15 +20,7 @@ class Human(PlayerInteraction):
                     choose = ChooseAction.TAKE_CARD
                     return choose
                 case 'S':
-                    choose = ChooseAction.SPEND
+                    choose = ChooseAction.SPENDы
                     return choose
-            
-            # choose = input("Choose action: \n")
-            # if player.coins == 0 or choose == 'T':
-            #     choose = 'Take card'
-            # elif choose == 'S':
-            #     choose = 'Spend'
-            # return choose
-
             
                     
